@@ -13,25 +13,25 @@ const ContactItemList = (props) => {
     // hover:shadow-lg
 
     //hover:scale-105 hover:translate-y-2
-    <div className="relative p-4 pb-20 m-4 ease-in shadow-lg shadow-slate-500 hover:shadow-gray-800 hover:shadow-2xl rounded-xl bg-slate-300 hover:bg-stone-200">
+    <div className="relative p-4 px-6 pb-6 m-4 ease-in shadow-lg shadow-slate-500 hover:shadow-gray-800 hover:shadow-2xl rounded-xl bg-slate-300 hover:bg-stone-200">
       <div className="flex flex-col items-center justify-center w-full pt-2">
         <img src={userIcon} alt="user Icon was here" className="w-20" />
         <p className="break-before-all">{props.name || "mansoor (default)"}</p>
       </div>
-      <div className="flex w-full pt-4">
+      <div className="flex w-full pt-4 ">
         <img src={emailIcon} alt="user Email" className="w-8 mr-2" />
         <p className="pl-1 break-before-all">
           {" "}
           {props.email || "email (default)"}
         </p>
       </div>
-      <div className="flex w-full pt-2">
+      <div className="flex w-full pt-2 ">
         <img src={phoneIcon} alt="user Number" className="w-8 mr-2" />
         <p className="pl-1 break-before-all">
           {props.number || "987654321(default)"}
         </p>
       </div>
-      <div className="absolute flex justify-end gap-6 mt-4 ml-3 text-base bottom-6 ">
+      <div className="flex justify-center w-full gap-6 mt-4 text-base ">
         <OneButton onClick={props.onClickEdit}>Edit</OneButton>
         <TwoButton onClick={props.onClickDelet}>Delet</TwoButton>
       </div>

@@ -70,7 +70,7 @@ const Modal = (props) => {
   return (
     <Overlay>
       <form
-        className={`fixed grid w-[30rem] p-4 text-left left-[calc(50%-15rem)] ${formStyle} top-40 text-lg transition duration-1000 ease-in rounded-2xl z-50`}
+        className={` grid p-4 text-left  ${formStyle}  w-72 sm:w-[400px] md:w-[600px] text-lg transition duration-1000 ease-in rounded-2xl z-50`}
         onSubmit={formVisible}
       >
         <div className="w-full h-full my-2">

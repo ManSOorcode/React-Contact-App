@@ -41,19 +41,17 @@ const Layer = () => {
     setForm(false);
   };
   return (
-    <div>
-      <div className="font-mono">
-        {!modalState && (
-          <Modal onClick={formHideHandler} modalState={hideModalhandler} />
-        )}
-        <Header />
+    <div className="w-full ">
+      {!modalState && (
+        <Modal onClick={formHideHandler} modalState={hideModalhandler} />
+      )}
+      <Header />
 
-        <main className="grid  h-[calc(100vh-96px)]    ">
-          <ContactItem onClickEdit={editHandler} onClickDelet={deleteHandler} />
-        </main>
+      <main className="grid  h-[calc(100vh-96px)]    ">
+        <ContactItem onClickEdit={editHandler} onClickDelet={deleteHandler} />
+      </main>
 
-        <ContactAddButton onClick={formShowHandler} />
-      </div>
+      <ContactAddButton onClick={formShowHandler} />
     </div>
   );
 };
