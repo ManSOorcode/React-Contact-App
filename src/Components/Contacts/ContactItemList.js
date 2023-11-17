@@ -42,7 +42,7 @@ const ContactItemList = (props) => {
       </div>
       <div className="flex justify-center w-full gap-6 mt-4 text-base ">
         <OneButton onClick={props.onClickEdit}>Edit</OneButton>
-        <TwoButton onClick={props.onClickDelet}>Delet</TwoButton>
+        <TwoButton onClick={props.onClickDelet}>Delete</TwoButton>
       </div>
     </div>
   );
