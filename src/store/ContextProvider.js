@@ -11,6 +11,13 @@ export const ContentContext = React.createContext({
   toggle: () => {},
 
   formToggles: "",
+  isDark: false,
+
+  isdarkhandler: () => {},
+
+  //for HeaderIcon
+  headerIcon: "",
+  isHeaderIcon: () => {},
   // stateValue: "",
 });
 
@@ -85,6 +92,10 @@ const ContextProvider = (props) => {
   const [contentState, dispatch] = useReducer(reducer, initialState);
 
   const [formToggle, setFormToggle] = useState(true);
+  const [isdarkbackground, setdark] = useState(false);
+
+  //for headerIcon
+  const [isHeader, setHeader] = useState("");
 
   const addContentHandler = (item) => {
     // e.preventDefault()
@@ -126,15 +137,26 @@ const ContextProvider = (props) => {
 
     formToggles: formToggle,
 
+    isDark: isdarkbackground,
+
     add: addContentHandler,
     delet: deletContentHandler,
     edit: editContentHandller,
     reassign: reassignEditContentHandller,
     toggle: setFormToggle,
+    isdarkhandler: setdark,
+
+    //for Header Icon
+    headerIcon: isHeader,
+    isHeaderIcon: setHeader,
+    // (value, callback) => {
+    //   setHeader(value);
+    //   callback(); // Execute the callback after updating the state
+    // },
   };
 
   // console.log(contentStore.formToggles);
-  // console.log(contentStore);
+  // console.log(contentStore.headerIcon, contentStore.isHeaderIcon);
 
   return (
     <ContentContext.Provider value={contentStore}>

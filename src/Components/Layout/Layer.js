@@ -26,8 +26,8 @@ const Layer = () => {
   };
 
   const hideModalhandler = (condition) => {
-    console.log(modalState);
-    console.log(condition, "condition");
+    // console.log(modalState);
+    // console.log(condition, "condition");
     setForm(condition);
   };
 
@@ -40,8 +40,13 @@ const Layer = () => {
     context.toggle(false);
     setForm(false);
   };
+
   return (
-    <div className="w-full ">
+    <div
+      className={`w-full overflow-scroll ${
+        context.isDark ? "bg-[#1f2837]" : "bg-slate-400"
+      } h-[100vh]`}
+    >
       {!modalState && (
         <Modal onClick={formHideHandler} modalState={hideModalhandler} />
       )}

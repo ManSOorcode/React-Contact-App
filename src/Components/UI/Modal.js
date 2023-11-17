@@ -6,7 +6,16 @@ import OneButton from "./Button/OneButton";
 import TwoButton from "./Button/TwoButton";
 import Overlay from "./Overlay";
 
+import firstImg from "../../Assets/header-images/header-one.gif";
+import secondImg from "../../Assets/header-images/header-two.webp";
+import thirdImg from "../../Assets/header-images/header-three.webp";
+import fourImg from "../../Assets/header-images/header-four.webp";
+import fiveImg from "../../Assets/header-images/header-five.webp";
+import sixImg from "../../Assets/header-images/header-six.gif";
+import sevenImg from "../../Assets/header-images/header-seven.gif";
+
 const Modal = (props) => {
+  const [error, setError] = useState(null);
   let fullName = useRef(null);
   let email = useRef(null);
   let number = useRef(null);
@@ -20,12 +29,52 @@ const Modal = (props) => {
   const addFormSubmitHandler = (e) => {
     e.preventDefault();
 
-    contentCtx.add({
+    const formData = {
+      name: fullName.current.value.trim(),
+      email: email.current.value.trim(),
+      number: number.current.value.trim(),
+    };
+
+    if (
+      !isValidName(formData.name) ||
+      !isValidEmail(formData.email) ||
+      !isValidNumber(formData.number)
+    ) {
+      // Display an error message or handle the validation error appropriately
+      setError("Invalid input. Please check your input values.");
+      return;
+    }
+
+    const userData = {
       id: getUUID(),
       name: fullName.current.value,
       email: email.current.value,
       number: number.current.value,
-    });
+    };
+
+    contentCtx.add(userData);
+
+    const headersImages = [
+      firstImg,
+      secondImg,
+      thirdImg,
+      fourImg,
+      fiveImg,
+      sixImg,
+      sevenImg,
+    ];
+    const randomHeaderIcon =
+      headersImages[Math.floor(Math.random() * headersImages.length)];
+
+    console.log(Math.floor(Math.random() * headersImages.length));
+
+    contentCtx.isHeaderIcon(randomHeaderIcon);
+    //    () => {
+    //   console.log(contentCtx.headerIcon); // Ensure the state is updated
+    //   // Additional logic if needed
+    // });
+
+    // contentCtx.localStorageValue(userData);
 
     fullName.current.value = "";
     email.current.value = "";
@@ -49,6 +98,22 @@ const Modal = (props) => {
   const edditFormSubmitHandler = (e) => {
     e.preventDefault();
 
+    const formData = {
+      name: fullName.current.value.trim(),
+      email: email.current.value.trim(),
+      number: number.current.value.trim(),
+    };
+
+    if (
+      !isValidName(formData.name) ||
+      !isValidEmail(formData.email) ||
+      !isValidNumber(formData.number)
+    ) {
+      // Display an error message or handle the validation error appropriately
+      setError("Invalid input. Please check your input values.");
+      return;
+    }
+
     contentCtx.reassign({
       id: contentCtx.editContents[0].id,
       name: fullName.current.value,
@@ -58,6 +123,12 @@ const Modal = (props) => {
 
     props.modalState(true);
   };
+
+  const isValidName = (name) => /^[a-zA-Z ]+$/.test(name);
+
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const isValidNumber = (number) => /^\d{10}$/.test(number);
 
   const formVisible =
     contentCtx.formToggles === true
@@ -86,6 +157,7 @@ const Modal = (props) => {
             <label className="mb-2">Number:</label>
             <input type="number" ref={number} />
           </div>
+          {error && <div className="text-red-500">{error}</div>}
 
           <div className="flex justify-end gap-5 mr-5 ">
             <TwoButton onClick={props.onClick}>Cancel</TwoButton>
