@@ -7,6 +7,7 @@ import Modal from "../UI/Modal";
 
 import ContactItem from "../Contacts/ContactItem";
 import Header from "../Layout/Header";
+import TawkToChat from "../TawkToChat";
 
 const Layer = () => {
   const [modalState, setForm] = useState(true);
@@ -57,6 +58,7 @@ const Layer = () => {
       </main>
 
       <ContactAddButton onClick={formShowHandler} />
+      <TawkToChat />
     </div>
   );
 };
