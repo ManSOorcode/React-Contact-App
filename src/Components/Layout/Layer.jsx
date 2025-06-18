@@ -6,8 +6,7 @@ import ContactAddButton from "../UI/Button/Button";
 import Modal from "../UI/Modal";
 
 import ContactItem from "../Contacts/ContactItem";
-import Header from "../Layout/Header";
-import TawkToChat from "../TawkToChat";
+import Header from "./Header";
 
 const Layer = () => {
   const [modalState, setForm] = useState(true);
@@ -44,21 +43,21 @@ const Layer = () => {
 
   return (
     <div
-      className={`w-full overflow-scroll ${
-        context.isDark ? "bg-[#1f2837]" : "bg-slate-400"
-      } h-[100vh]`}
+      className={`w-full  overflow-scroll ${
+        context.isDark ? "bg-[#1f2837]" : "bg-slate-100"
+      } `}
     >
       {!modalState && (
         <Modal onClick={formHideHandler} modalState={hideModalhandler} />
       )}
       <Header />
 
-      <main className="grid  h-[calc(100vh-96px)]    ">
+      <main className="grid  h-[calc(100vh-96px)]   w-full  ">
         <ContactItem onClickEdit={editHandler} onClickDelet={deleteHandler} />
       </main>
 
       <ContactAddButton onClick={formShowHandler} />
-      <TawkToChat />
+      {/* <TawkToChat /> */}
     </div>
   );
 };

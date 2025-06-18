@@ -7,16 +7,16 @@ const Header = () => {
   const context = useContext(ContentContext);
   return (
     <header
-      className={`flex items-center w-full h-[5rem] ${
+      className={`flex items-center w-full h-[4rem]  ${
         context.isDark ? "bg-gray-900" : "bg-yellow-800"
       }`}
     >
       <img
         src={headerImage}
         alt="contact app Icon was here"
-        className="w-24 md:pl-4 md:w-32 "
+        className="w-20 md:pl-4 md:w-28 "
       />
-      <h2 className="w-full font-mono text-3xl font-bold text-white md:text-4xl ">
+      <h2 className="w-full font-mono text-xl font-bold text-white md:text-3xl ">
         Contact App
       </h2>
 
